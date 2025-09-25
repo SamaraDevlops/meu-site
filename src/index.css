@@ -1,0 +1,314 @@
+/*
+ * TEMA: FILOSÓFICO SÉPIA (CÓDIGO COMPLETO)
+ * Refatorado por Gemini para um visual de "grande pensadora"
+ */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* O RESTO DO SEU CÓDIGO CSS COMEÇA AQUI */
+
+:root {
+  --background-color: #191919; /* Cinza grafite, fundo principal */
+  --card-background: #282828; /* Fundo dos cards, um pouco mais claro */
+  --text-color: #f0f0f0; /* Branco suave para o texto principal */
+  --subtle-text-color: #a0a0a0; /* Cinza para textos secundários */
+  --primary-color: #8B4513; /* Sépia, cor de destaque principal */
+  --primary-hover-color: #A0522D; /* Sépia mais claro para hover */
+  --border-color: #444; /* Borda sutil */
+  --danger-color: #d32f2f; /* Vermelho para ações de perigo */
+  --danger-hover-color: #e53935;
+  --title-font: 'Merriweather', serif; /* Fonte para títulos */
+  --body-font: 'Roboto', sans-serif; /* Fonte para o corpo do texto */
+}
+
+/* --- GERAL E LAYOUT --- */
+body {
+  font-family: var(--body-font);
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  flex-grow: 1;
+}
+
+/* --- CABEÇALHO E RODAPÉ --- */
+.blog-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-family: var(--title-font);
+  color: var(--text-color);
+}
+
+.blog-header p {
+  margin: 0.5rem 0 1.5rem;
+  font-size: 1.1rem;
+  color: var(--subtle-text-color);
+}
+
+.main-nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.main-nav button {
+  background: none;
+  border: none;
+  color: var(--subtle-text-color);
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 1.5rem;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.main-nav button:hover {
+  color: var(--primary-color);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  background-color: var(--card-background);
+  color: var(--subtle-text-color);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* --- LISTA DE POSTS --- */
+.post-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.post-excerpt {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+}
+
+.post-excerpt:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+}
+
+.post-excerpt-content {
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.post-excerpt h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--title-font);
+  color: var(--text-color);
+}
+
+.post-excerpt p {
+  margin: 0;
+  color: var(--subtle-text-color);
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--primary-color);
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.post-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* --- DETALHE DO POST --- */
+.post-detail h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--title-font);
+}
+
+.post-detail-excerpt {
+  font-size: 1.1rem;
+  color: var(--subtle-text-color);
+  border-left: 2px solid var(--primary-color);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+}
+
+.post-detail-content {
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+/* --- FORMULÁRIOS (CRIAR/EDITAR/RASCUNHO) --- */
+.form-page-container {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  max-width: 700px;
+  margin: 1rem auto;
+}
+
+.form-page-container h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-family: var(--title-font);
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  font-family: var(--body-font);
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: var(--subtle-text-color);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.error-message {
+  color: var(--danger-color);
+  text-align: center;
+  margin: -0.5rem 0 1rem;
+}
+
+.draft-page p {
+  text-align: center;
+  color: var(--subtle-text-color);
+  margin-top: -1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.draft-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.save-status {
+  font-style: italic;
+  color: var(--subtle-text-color);
+}
+
+/* --- BOTÕES --- */
+button {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border-color: var(--primary-color);
+}
+
+.admin-actions button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  margin: 0 0.5rem;
+  border: 1px solid var(--primary-color);
+}
+.admin-actions button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.back-button {
+  display: block;
+  margin-bottom: 1.5rem;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+.back-button:hover {
+  background-color: var(--card-background);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.publish-button, .save-button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: 1px solid var(--primary-color);
+}
+.publish-button:hover, .save-button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.edit-button, .delete-button, .clear-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.delete-button, .clear-button {
+  color: var(--danger-color);
+}
+.delete-button:hover, .clear-button:hover {
+  color: var(--danger-hover-color);
+}

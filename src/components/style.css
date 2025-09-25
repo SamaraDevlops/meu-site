@@ -1,0 +1,52 @@
+.form-page-container {
+  padding: 20px;
+}
+
+.form-page-container h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-page-container .back-button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.form-page-container input[type="text"],
+.form-page-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-page-container input[type="text"]::placeholder,
+.form-page-container textarea::placeholder {
+  color: #888;
+}
+
+.form-page-container .publish-button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-page-container .publish-button:hover {
+  background-color: #218838;
+}
